@@ -13,6 +13,10 @@ func indexTmp() string {
 </head>
 <body>
 <p style="text-align: center;">Drag File There To Send</p>
+<form enctype="multipart/form-data" action="/setClipboard" method="post">
+    <input type="text" name="clipboard" />
+    <input type="submit" value="set" />
+</form>
 <form enctype="multipart/form-data" action="/upload" method="post">
     <input type="file" name="file" />
     <input type="hidden" name="token" value="{{.}}"/>

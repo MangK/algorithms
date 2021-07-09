@@ -11,6 +11,7 @@ func Start(cfg Server) {
 	http.HandleFunc("/", Index)
 	http.HandleFunc("/upload", Upload)
 	http.HandleFunc("/ping", Ping)
+	http.HandleFunc("/setClipboard", SetClipboard)
 
 	addr, err := GetLocalIP()
 	if err != nil {

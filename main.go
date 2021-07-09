@@ -3,14 +3,14 @@ package main
 import (
 	myFile "DragFile/file"
 	"DragFile/params"
-	"DragFile/server/http"
+	server_http "DragFile/server/http"
 	"fmt"
 )
 
 func main() {
-	params := params.GetParams()
-	defer myFile.HasFileOrDropDir(params.Dir)
+	param := params.GetParams()
+	defer myFile.HasFileOrDropDir(param.Dir)
 
-	fmt.Println("Current Config:", params)
-	http.Start(params)
+	fmt.Println("Current Config:", param)
+	server_http.Start(param)
 }

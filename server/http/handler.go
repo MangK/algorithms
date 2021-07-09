@@ -2,6 +2,7 @@ package http
 
 import (
 	"encoding/json"
+	"github.com/atotto/clipboard"
 	"io"
 	"net/http"
 	"os"
@@ -41,4 +42,11 @@ func Upload(w http.ResponseWriter, r *http.Request) {
 		io.Copy(f, file)
 	}
 	w.Write([]byte("<script>window.location.replace('" + ServerCfg.Addr + "');</script>"))
+}
+
+func SetClipboard(w http.ResponseWriter, r *http.Request) {
+	str := r.FormValue("clipboard")
+	clipboard.WriteAll(str)
+	w.Write([]byte("<script>window.location.replace('" + ServerCfg.Addr + "');</script>"))
+	return
 }
