@@ -5,3 +5,4 @@ server/http/index.html
 .idea
 go.sum
 .gitignore
+main.exe

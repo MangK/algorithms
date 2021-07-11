@@ -8,6 +8,8 @@ import (
 	"fmt"
 )
 
+var Exit = make(chan bool)
+
 func main() {
 	param := params.GetParams()
 	addr, err := server_http.GetLocalIP()
@@ -19,9 +21,9 @@ func main() {
 	defer myFile.HasFileOrDropDir(param.Dir)
 
 	fmt.Println("Current Config:", param)
-	ui.Run(param)
-}
 
-func start(param server_http.Server) {
-	server_http.Start(param)
+	go server_http.Start(param)
+
+	ui.Run(param)
+
 }
